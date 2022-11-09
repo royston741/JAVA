@@ -1,0 +1,29 @@
+create database countryDB;
+
+use countryDB;
+
+create table country(
+	country_id int not null,
+	country_name varchar(100) not null,
+	region_id int not null
+);
+
+insert into country values(1,"India",91);
+insert into country values(2,"France",92);
+insert into country values(3,"Italy",93);
+insert into country values(4,"USA",94);
+insert into country values(5,"UK",95);
+
+alter table country add country_capital varchar(100);
+
+Select * from country;
+
+	update country
+	set country_id = 8
+	WHERE country_name="India";
+	
+Select * from country;
+	
+delete from country where country_id=3;
+	
+Select * from country;
