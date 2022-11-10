@@ -1,0 +1,191 @@
+
+mysql> CREATE DATABASE joinsDB;
+Query OK, 1 row affected (0.07 sec)
+
+mysql>
+mysql> USE joinsDB;
+Database changed
+mysql>
+mysql> CREATE TABLE student(
+    -> std_id int,
+    -> std_name varchar(40),
+    -> std_rollNo int
+    -> );
+Query OK, 0 rows affected (0.14 sec)
+
+mysql>
+mysql> INSERT INTO student VALUES(1,"Tom",21);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO student VALUES(2,"Ram",22);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO student VALUES(3,"Sham",23);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO student VALUES(4,"Jhon",24);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO student VALUES(5,"Som",25);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO student VALUES(6,"Dom",26);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO student VALUES(7,"Mack",27);
+Query OK, 1 row affected (0.04 sec)
+
+mysql>
+mysql>
+mysql>
+mysql> CREATE TABLE teacher(
+    -> teacher_id int,
+    -> teacher_name varchar(40),
+    -> teacher_sub varchar(40)
+    -> );
+Query OK, 0 rows affected (0.81 sec)
+
+mysql>
+mysql> INSERT INTO teacher VALUES(1,"Satish","English");
+Query OK, 1 row affected (0.04 sec)
+
+mysql> INSERT INTO teacher VALUES(2,"Anne","Science");
+Query OK, 1 row affected (0.07 sec)
+
+mysql> INSERT INTO teacher VALUES(3,"Bharti","Marathi");
+Query OK, 1 row affected (0.07 sec)
+
+mysql> INSERT INTO teacher VALUES(4,"Kiran","Social Studies");
+Query OK, 1 row affected (0.08 sec)
+
+mysql>
+mysql> SELECT * FROM student;
++--------+----------+------------+
+| std_id | std_name | std_rollNo |
++--------+----------+------------+
+|      1 | Tom      |         21 |
+|      2 | Ram      |         22 |
+|      3 | Sham     |         23 |
+|      4 | Jhon     |         24 |
+|      5 | Som      |         25 |
+|      6 | Dom      |         26 |
+|      7 | Mack     |         27 |
++--------+----------+------------+
+7 rows in set (0.00 sec)
+
+mysql>
+mysql> SELECT * FROM teacher;
++------------+--------------+----------------+
+| teacher_id | teacher_name | teacher_sub    |
++------------+--------------+----------------+
+|          1 | Satish       | English        |
+|          2 | Anne         | Science        |
+|          3 | Bharti       | Marathi        |
+|          4 | Kiran        | Social Studies |
++------------+--------------+----------------+
+4 rows in set (0.00 sec)
+
+mysql>
+mysql>
+mysql> SELECT teacher.teacher_name,student.std_name
+    -> FROM teacher
+    -> INNER JOIN student
+    -> ON teacher.teacher_id=student.std_id;
++--------------+----------+
+| teacher_name | std_name |
++--------------+----------+
+| Satish       | Tom      |
+| Anne         | Ram      |
+| Bharti       | Sham     |
+| Kiran        | Jhon     |
++--------------+----------+
+4 rows in set (0.00 sec)
+
+mysql>
+mysql>
+mysql> SELECT teacher.teacher_sub,student.std_name
+    -> FROM teacher
+    -> LEFT JOIN student
+    -> ON teacher.teacher_id=student.std_id;
++----------------+----------+
+| teacher_sub    | std_name |
++----------------+----------+
+| English        | Tom      |
+| Science        | Ram      |
+| Marathi        | Sham     |
+| Social Studies | Jhon     |
++----------------+----------+
+4 rows in set (0.00 sec)
+
+mysql>
+mysql>
+mysql> SELECT teacher.teacher_name,student.std_name
+    -> FROM teacher
+    -> RIGHT JOIN student
+    -> ON teacher.teacher_id=student.std_id;
++--------------+----------+
+| teacher_name | std_name |
++--------------+----------+
+| Satish       | Tom      |
+| Anne         | Ram      |
+| Bharti       | Sham     |
+| Kiran        | Jhon     |
+| NULL         | Som      |
+| NULL         | Dom      |
+| NULL         | Mack     |
++--------------+----------+
+7 rows in set (0.00 sec)
+
+mysql>
+mysql>
+mysql> SELECT *
+    -> FROM teacher
+    -> FUll JOIN student;
++------------+--------------+----------------+--------+----------+------------+
+| teacher_id | teacher_name | teacher_sub    | std_id | std_name | std_rollNo |
++------------+--------------+----------------+--------+----------+------------+
+|          4 | Kiran        | Social Studies |      1 | Tom      |         21 |
+|          3 | Bharti       | Marathi        |      1 | Tom      |         21 |
+|          2 | Anne         | Science        |      1 | Tom      |         21 |
+|          1 | Satish       | English        |      1 | Tom      |         21 |
+|          4 | Kiran        | Social Studies |      2 | Ram      |         22 |
+|          3 | Bharti       | Marathi        |      2 | Ram      |         22 |
+|          2 | Anne         | Science        |      2 | Ram      |         22 |
+|          1 | Satish       | English        |      2 | Ram      |         22 |
+|          4 | Kiran        | Social Studies |      3 | Sham     |         23 |
+|          3 | Bharti       | Marathi        |      3 | Sham     |         23 |
+|          2 | Anne         | Science        |      3 | Sham     |         23 |
+|          1 | Satish       | English        |      3 | Sham     |         23 |
+|          4 | Kiran        | Social Studies |      4 | Jhon     |         24 |
+|          3 | Bharti       | Marathi        |      4 | Jhon     |         24 |
+|          2 | Anne         | Science        |      4 | Jhon     |         24 |
+|          1 | Satish       | English        |      4 | Jhon     |         24 |
+|          4 | Kiran        | Social Studies |      5 | Som      |         25 |
+|          3 | Bharti       | Marathi        |      5 | Som      |         25 |
+|          2 | Anne         | Science        |      5 | Som      |         25 |
+|          1 | Satish       | English        |      5 | Som      |         25 |
+|          4 | Kiran        | Social Studies |      6 | Dom      |         26 |
+|          3 | Bharti       | Marathi        |      6 | Dom      |         26 |
+|          2 | Anne         | Science        |      6 | Dom      |         26 |
+|          1 | Satish       | English        |      6 | Dom      |         26 |
+|          4 | Kiran        | Social Studies |      7 | Mack     |         27 |
+|          3 | Bharti       | Marathi        |      7 | Mack     |         27 |
+|          2 | Anne         | Science        |      7 | Mack     |         27 |
+|          1 | Satish       | English        |      7 | Mack     |         27 |
++------------+--------------+----------------+--------+----------+------------+
+28 rows in set (0.00 sec)
+
+mysql>
+mysql>
+
+
+
+
+
+
+
+
+
+
+
+
