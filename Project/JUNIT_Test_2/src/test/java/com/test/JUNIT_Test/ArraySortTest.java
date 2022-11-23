@@ -1,3 +1,9 @@
+/* 
+	Program : Testing the maxValueOfMethod of ArraySorted class
+	@Author : Royston
+	@Date :23 Nov
+*/
+
 package com.test.JUNIT_Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
