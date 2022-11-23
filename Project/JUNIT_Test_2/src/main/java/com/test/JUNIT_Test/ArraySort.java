@@ -1,3 +1,9 @@
+/* 
+	Program : Finding the max value in an array
+	@Author : Royston
+	@Date :23 Nov
+*/
+
 package com.test.JUNIT_Test;
 
 import java.util.Arrays;
