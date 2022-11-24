@@ -156,7 +156,7 @@ public class StudentDao {
 		catch (Exception e) {
 			if (transaction != null) {
 				// undo work done in the correct transaction
-				transaction.rollback();
+// 				transaction.rollback();
 			}
 
 		}
