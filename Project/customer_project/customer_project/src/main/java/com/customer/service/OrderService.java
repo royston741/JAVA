@@ -6,19 +6,29 @@ import com.customer.entity.Order;
 import com.customer.model.OrderDTO;
 
 public interface OrderService {
+
+	// Create
 	String createOrder(Order order, int id);
 
+	// Read
 	OrderDTO getOrderById(int id);
 
-	OrderDTO updateOrder(int id, Order order);
-
+	// Read All
 	List<OrderDTO> getAllOrder();
 
-	String deleteOrderById(int id);
-
-	void deleteAllOrders();
-
+	// Read greater price order
 	List<OrderDTO> getOrderGreaterThanPrice(double price);
 
+	// Read less price order
 	List<OrderDTO> getOrderLessThanPrice(double price);
+
+	// Update
+	OrderDTO updateOrder(int id, Order order);
+
+	// Delete
+	String deleteOrderById(int id);
+
+	// Delete All
+	void deleteAllOrders();
+
 }

@@ -42,9 +42,11 @@ public class Customer {
 	@Column(name = "customer_email")
 	private String email;
 
+	// One to one relation ship between Customer and address
 	@OneToOne(cascade = CascadeType.ALL) // one table to another table
 	private Address address;
 
+	// One to many relation ship between Customer and orders
 	@OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH }, fetch = FetchType.EAGER)
 	@JsonIgnore
 	private List<Order> order;

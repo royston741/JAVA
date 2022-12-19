@@ -9,6 +9,7 @@ import com.customer.serviceimpl.CustomerServiceImpl;
 
 public class CustomerTest {
 
+	// customer service reference
 	CustomerService customerService;
 
 	@org.junit.Before
@@ -23,7 +24,9 @@ public class CustomerTest {
 
 	@Test
 	public void testGetCustomerById() {
+		// get customer name
 		String name = customerService.getCustomerById(1).getCustomerName();
+		// compare name
 		assertEquals("Sam", name);
 	}
 

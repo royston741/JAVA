@@ -9,6 +9,7 @@ import com.customer.serviceimpl.OrderServiceImpl;
 
 public class OrderTest {
 
+	// order service reference impl
 	OrderService orderService;
 
 	@org.junit.Before
@@ -23,7 +24,10 @@ public class OrderTest {
 
 	@Test
 	public void testGetCustomerById() {
+		// get order name
 		String name = orderService.getOrderById(1).getOrderName();
+
+		// comapre order name
 		assertEquals("TV", name);
 	}
 }

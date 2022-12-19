@@ -8,10 +8,14 @@ import org.springframework.data.repository.query.Param;
 
 import com.customer.entity.Order;
 
+//Interface Order extends JPA Interfaace
 public interface OrderRepository extends JpaRepository<Order, Integer> {
+
+	// find all the orders greater than price
 	@Query("from Order where orderPrice >:s")
 	List<Order> findGreaterPrice(@Param("s") double price);
 
+	// find all the orders less than price
 	@Query("from Order where orderPrice <:s")
 	List<Order> findLessPrice(@Param("s") double price);
 }

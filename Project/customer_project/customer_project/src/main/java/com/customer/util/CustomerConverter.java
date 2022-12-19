@@ -9,23 +9,34 @@ import com.customer.model.CustomerDTO;
 @Component
 public class CustomerConverter {
 
-	public Customer convertToEntity(CustomerDTO CustomerDTO) {
-
+	// CustomerDTO to Customer object
+	public Customer convertToEntity(CustomerDTO customerDTO) {
+		// create customer object
 		Customer customer = new Customer();
-		if (CustomerDTO != null) {
-			BeanUtils.copyProperties(CustomerDTO, customer);
+
+		// if customerDTO not null
+		if (customerDTO != null) {
+			// copy its properties in customer
+			BeanUtils.copyProperties(customerDTO, customer);
 		}
 
+		// return customer
 		return customer;
 	}
 
+	// Customer to CustomerDTO object
 	public CustomerDTO convertToCustomerDTO(Customer customer) {
 
+		// create customerDTO object
 		CustomerDTO customerDTO = new CustomerDTO();
+
+		// if customer not null
 		if (customer != null) {
+			// copy its properties in customer
 			BeanUtils.copyProperties(customer, customerDTO);
 		}
 
+		// return customerDTO
 		return customerDTO;
 	}
 }
