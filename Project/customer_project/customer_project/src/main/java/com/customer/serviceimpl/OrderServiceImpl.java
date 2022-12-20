@@ -144,6 +144,25 @@ public class OrderServiceImpl implements OrderService {
 		return allOrderDTOs;
 	}
 
+	// get order between provided price
+	@Override
+	public List<OrderDTO> getOrderBetweenPrice(double maxPrice, double minPrice) {
+
+		// find the order between than price
+		List<Order> allOrderList = orderRepository.findBetweenPrice(maxPrice, minPrice);
+
+		List<OrderDTO> allOrderDTOs = new ArrayList<>();
+
+		// for each order
+		for (Order order : allOrderList) {
+			// convert into OrderDTO and save into allOrderDTOs
+			allOrderDTOs.add(orderConverter.convertToOrderDTO(order));
+		}
+
+		// return allOrderDTOs
+		return allOrderDTOs;
+	}
+
 	// update order
 	@Override
 	public OrderDTO updateOrder(int id, Order order) {

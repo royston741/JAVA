@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -38,5 +39,14 @@ public class Order {
 	@ManyToOne
 //	@JsonIgnore
 	private Customer customer;
+
+	@Builder
+	public Order(String orderName, double orderPrice, int orderQuantity, Customer customer) {
+		super();
+		this.orderName = orderName;
+		this.orderPrice = orderPrice;
+		this.orderQuantity = orderQuantity;
+		this.customer = customer;
+	}
 
 }

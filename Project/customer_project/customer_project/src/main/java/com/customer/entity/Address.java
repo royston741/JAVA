@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -39,5 +40,15 @@ public class Address {
 
 	@Column(name = "pincode")
 	private long pincode;
+
+	@Builder
+	public Address(String state, String city, String area, String apartment, long pincode) {
+		super();
+		this.state = state;
+		this.city = city;
+		this.area = area;
+		this.apartment = apartment;
+		this.pincode = pincode;
+	}
 
 }

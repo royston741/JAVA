@@ -18,4 +18,8 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
 	// find all the orders less than price
 	@Query("from Order where orderPrice <:s")
 	List<Order> findLessPrice(@Param("s") double price);
+
+	// find all the orders less than price
+	@Query("from Order where orderPrice between :p and :s")
+	List<Order> findBetweenPrice(@Param("s") double maxPrice, @Param("p") double minPrice);
 }

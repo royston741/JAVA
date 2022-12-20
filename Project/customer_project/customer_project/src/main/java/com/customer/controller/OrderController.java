@@ -46,14 +46,21 @@ public class OrderController {
 	}
 
 	@GetMapping("/getGreaterOrder/{price}")
-	public List<OrderDTO> getAllGreaterOrder(@PathVariable double price) {
+	public List<OrderDTO> getAllGreaterOrder(@PathVariable("price") double price) {
 		return orderService.getOrderGreaterThanPrice(price);
 	}
 
 	@GetMapping("/getLessOrder/{price}")
-	public List<OrderDTO> getAllLessOrder(@PathVariable double price) {
-		System.out.println("less");
+	public List<OrderDTO> getAllLessOrder(@PathVariable("price") double price) {
 		return orderService.getOrderLessThanPrice(price);
+	}
+
+	@GetMapping("/getOrderBetweenPrice/{max}/{min}")
+	public List<OrderDTO> getOrderBetweenPrice(@PathVariable("max") double maxPrice,
+			@PathVariable("min") double minPrice) {
+		System.out.println(maxPrice);
+		System.out.println(minPrice);
+		return orderService.getOrderBetweenPrice(maxPrice, minPrice);
 	}
 
 	// UPDATE

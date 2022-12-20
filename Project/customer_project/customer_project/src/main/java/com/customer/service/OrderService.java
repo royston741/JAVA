@@ -22,6 +22,9 @@ public interface OrderService {
 	// Read less price order
 	List<OrderDTO> getOrderLessThanPrice(double price);
 
+	// Read between price order
+	List<OrderDTO> getOrderBetweenPrice(double maxPrice, double minPrice);
+
 	// Update
 	OrderDTO updateOrder(int id, Order order);
 
